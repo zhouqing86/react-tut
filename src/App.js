@@ -29,6 +29,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello World!!!</h1>
+          <input type="button" value="refresh"/>
         <table>
           <tbody>
             {this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
