@@ -26,7 +26,7 @@
   "scripts": {
     "start": "webpack-dev-server --hot",
     "build": "rimraf dist && NODE_ENV=production webpack",
-    "test": "mocha --compilers js:babel-core/register \"test/**/*@(.js|.jsx)\" --watch --watch-extensions jsx",
+    "test": "mocha --compilers js:babel-core/register \"test/**/*@(.js|.jsx)\" --require test/testHelper.js --watch --watch-extensions jsx",
     "eject": "react-scripts eject"
   },
   "babel": {

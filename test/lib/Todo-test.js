@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import { Todo } from '../../src/lib/Todo';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import 'jsdom-global/register';
 
 describe('Todo', () => {
     it('should render a div with "todo" class', () => {
