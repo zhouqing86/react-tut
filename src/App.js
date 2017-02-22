@@ -25,6 +25,10 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+      console.log('App componentDidMount');
+  }
+
   render() {
     return (
       <div>

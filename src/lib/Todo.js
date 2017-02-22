@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Todo = React.createClass({
-    componentDidMount: function() {
-        console.log('hhahhahha');
-    },
+class Todo extends React.Component {
+    componentDidMount() {
+        console.log('Just for test');
+    }
 
-    render: function() {
+    render() {
         const { todo } = this.props;
 
         return (
@@ -14,6 +14,6 @@ const Todo = React.createClass({
             </div>
         );
     }
-});
+}
 
 export { Todo };
