@@ -1,4 +1,5 @@
 import React from 'react';
+import faker from 'faker';
 
 class App extends React.Component {
 
@@ -22,7 +23,30 @@ class App extends React.Component {
           "age": "20"
         }
       ]
+    };
+    this.updateState = this.updateState.bind(this);
+    this.updateData = this.updateData.bind(this);
+  }
+
+  updateState(e) {
+    this.setState({ inputValue: e.target.value });
+  }
+
+  generateItem(id) {
+    return {
+      id: id,
+      name: faker.name.findName(),
+      age: faker.random.number()
     }
+  }
+
+  updateData() {
+    const randomData = [1, 2, 3].map(this.generateItem);
+    this.setState({ data: randomData });
+  }
+
+  closeMyAccount() {
+    console.log('closeMyAccount');
   }
 
   componentDidMount() {
@@ -33,7 +57,9 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello World!!!</h1>
-          <input type="button" value="refresh" className='refresh-button'/>
+          <input type="text" value={this.state.inputValue} onChange={this.updateState}/>
+          <p>{this.state.inputValue}</p>
+          <input type="button" value="refresh" className='refresh-button' onClick={this.updateData}/>
         <table>
           <tbody>
             {this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
