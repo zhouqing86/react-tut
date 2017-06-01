@@ -1,5 +1,6 @@
 import React from 'react';
 import faker from 'faker';
+import Todo from './lib/Todo';
 
 class App extends React.Component {
 
@@ -65,6 +66,7 @@ class App extends React.Component {
             {this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
           </tbody>
         </table>
+        <Todo />
       </div>
     )
   }
