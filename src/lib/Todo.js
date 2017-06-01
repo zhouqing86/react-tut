@@ -1,21 +1,25 @@
 import React from 'react';
 
 class Todo extends React.Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = {
           countValue: 0
       };
       this.increment = this.increment.bind(this);
       this.decrement = this.decrement.bind(this);
+
+      props.store.subscribe(() => {
+        this.forceUpdate();
+      });
     }
 
     increment() {
-      this.setState({ countValue: this.state.countValue + 1});
+      this.props.store.dispatch({type: 'INCREMENT'});
     }
 
     decrement() {
-      this.setState({ countValue: this.state.countValue - 1});
+      this.props.store.dispatch({type: 'DECREMENT'});
     }
 
     componentDidMount() {
@@ -23,13 +27,12 @@ class Todo extends React.Component {
     }
 
     render() {
-        const { todo } = this.props;
 
         return (
             <div className="todo">
                 <input type="button" value="+" onClick={this.increment}/>
                 <input type="button" value="-" onClick={this.decrement}/>
-                { this.state.countValue }
+                { this.props.store.getState() }
             </div>
         );
     }

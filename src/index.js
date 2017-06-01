@@ -16,13 +16,7 @@ function counter(state = 0, action) {
 
 let store = createStore(counter);
 
-store.subscribe(() =>
-  console.log(store.getState())
-);
-
-store.dispatch({ type: 'INCREMENT' });
-
 ReactDOM.render(
-  <App />,
+  <App store={store}/>,
   document.getElementById('root')
 );

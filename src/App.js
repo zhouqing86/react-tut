@@ -66,7 +66,7 @@ class App extends React.Component {
             {this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
           </tbody>
         </table>
-        <Todo />
+        <Todo store={this.props.store}/>
       </div>
     )
   }
