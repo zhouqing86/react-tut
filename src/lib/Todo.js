@@ -1,25 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class Todo extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
-          countValue: 0
-      };
       this.increment = this.increment.bind(this);
       this.decrement = this.decrement.bind(this);
-
-      props.store.subscribe(() => {
-        this.forceUpdate();
-      });
     }
 
     increment() {
-      this.props.store.dispatch({type: 'INCREMENT'});
+      this.props.dispatch({type: 'INCREMENT'});
     }
 
     decrement() {
-      this.props.store.dispatch({type: 'DECREMENT'});
+      this.props.dispatch({type: 'DECREMENT'});
     }
 
     componentDidMount() {
@@ -32,10 +26,16 @@ class Todo extends React.Component {
             <div className="todo">
                 <input type="button" value="+" onClick={this.increment}/>
                 <input type="button" value="-" onClick={this.decrement}/>
-                { this.props.store.getState() }
+                { this.props.state }
             </div>
         );
     }
 }
 
-export default Todo;
+const mapStateToProps = (state, ownProps) => {
+  console.log(state); // state
+  console.log(ownProps); // ownProps
+  return { state };
+}
+
+export default connect(mapStateToProps)(Todo);
